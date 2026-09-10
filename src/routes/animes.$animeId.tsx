@@ -36,10 +36,11 @@ function RouteComponent() {
 	async function checkShow() {
 	    const { data, error } = await supabase.from('user_shows').select().eq('user_id', claims?.sub).eq('mal_id', anime.id)
 
-	    if (error) alert(error);
-	    if (data!.length > 1) setInLibrary(true)
-		console.log('data for user is', data)
-	    console.log('length is', data?.length)
+	    if (error) console.error(error);
+	    if (data!.length > 0) {
+		setInLibrary(true)
+		console.log(inLibrary)
+	    }
 	}
 	checkShow()
     }, [])
@@ -84,7 +85,11 @@ function RouteComponent() {
 	<img className='w-[1rem]' src={userIcon} />
 	<p>)</p>
 	</div>
-	<button onClick={() => inLibrary ? removeInLib() : addToLib()} className='bg-prim-text text-bg! max-w-fit rounded-2xl px-5 py-1 my-2! cursor-pointer'>{inLibrary ? 'Remove From Library' : 'Add To Library'}</button>
+	{ inLibrary ?
+	<button onClick={() => removeInLib()} className='border-1 border-prim-text max-w-fit rounded-2xl px-5 py-1 my-2! cursor-pointer'>Remove From Library</button>
+	:
+	<button onClick={() => addToLib()} className='bg-prim-text text-bg! max-w-fit rounded-2xl px-5 py-1 my-2! cursor-pointer'>Add To Library</button>
+	}
 	<p>{anime.ep}</p>
 	<h2 className='font-bold text-lg'>Synopsis</h2>
 	<p
