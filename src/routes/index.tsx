@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { JwtPayload } from "@supabase/supabase-js";
+import type { Show } from "../types/type.ts"
 import Header from "../components/Header";
 import { useAuth } from "../hooks/useAuth";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute('/')({
     component: Index,
@@ -9,6 +11,14 @@ export const Route = createFileRoute('/')({
 
 function Index():React.ReactNode {
     const claims : JwtPayload | null = useAuth()
+    
+    const [userLib, setUserLib] = useState<Show>()
+
+    useEffect(() => {
+	if (!claims) return;
+
+	// fetch from supabase 
+    },[])
 
     // If user is logged in, show welcome screen
     if (claims) {
