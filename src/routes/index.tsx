@@ -17,7 +17,7 @@ function Index():React.ReactNode {
     useEffect(() => {
 	if (!claims) return;
 
-	// fetch from supabase 
+	// TODO fetch from database using join to merge cache_shows and user_shows to lessen rate limit 
     },[])
 
     // If user is logged in, show welcome screen
