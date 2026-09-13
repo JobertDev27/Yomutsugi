@@ -6,7 +6,6 @@ function _apiMapper(data: Tenrai): Show {
     return {
 	id: data.mal_id,
 	title: data.title,
-	thumbnail: data.images.webp.small_image_url,
 	cover: data.images.webp.large_image_url,
 	ep: data.episodes,
 	status: data.status,
