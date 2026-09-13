@@ -45,11 +45,18 @@ function RouteComponent() {
 	checkShow()
     }, [])
 
+
     const addToLib = async () => {
 	// TODO check cache_shows for show existance then add this show to cache_shows
-	//const {data, error} = await supabase.from('cache_shows').select().eq('mal_id', anime.id)
+	const cacheData = async () => {
+	
+	const {error} = await supabase.from('shows')
+	.insert({ title: anime.title, cover: anime.cover, mal_id: anime.id })
 
-    
+	if (error) console.error('cache:', error);
+	}
+	cacheData()
+
 	const { error } = await supabase
 	.from('user_shows')
 	.insert({ user_id: claims?.sub, mal_id: anime.id })
