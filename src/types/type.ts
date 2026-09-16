@@ -2,7 +2,6 @@ export type Show = {
     id: number;
     title: string;
     cover: string;
-    thumbnail: string;
     ep: number;
     status: string;
     aired: string;
