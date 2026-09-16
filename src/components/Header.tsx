@@ -21,10 +21,11 @@ export default function Header() {
     return <header className="flex flex-row w-full justify-between p-5" >
 
     <div  > <h1>Yomutsugi</h1> </div>
-    <form>
-    <input type="search" placeholder="search"/>	
+    <form className="flex justify-center items-center w-full">
+    <input type="search" className="border-1 border-border w-full max-w-[550px] py-2 px-4 rounded-md" placeholder="Search..."/>	
+    <button type="submit" className="border border-border py-2 px-4 bg-border rounded-r-lg">🔍︎</button>
     </form> 
-    <nav className="flex flex-row gap-5">
+    <nav className="flex flex-row gap-5 justify-center items-center">
     <Link to='/'>Library</Link>
     <Link to='/animes'>Browse</Link>
     {claims ? <button onClick={handleLogout}>Logout</button> : <Link to="/auth">Login</Link> }
