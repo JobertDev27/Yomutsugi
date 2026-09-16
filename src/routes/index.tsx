@@ -45,22 +45,21 @@ function Index():React.ReactNode {
 	return (
 	    <>
 	    <Header />
-	    <div>
-	    <h1>Welcome!</h1>
-	    <p>You are logged in as: {claims.email}</p>
-	    <main className="grid lg:grid-cols-8 md:grid-cols-4 grid-cols-2 gap-3">
+	    <main className="px-4!">
+	    <h2 className="text-xl font-bold mb-4!">LIBRARY</h2>
+	    <section className="grid lg:grid-cols-8 md:grid-cols-4 grid-cols-2 gap-3">
 	    {userLib.map((s, key) => <ShowCard key={key} show={s.shows} />)}
+	    </section>
 	    </main>
-	    </div>
 	    </>
 	)
     }
     return (
 	<>
 	<Header />
-	<div>
-	<p>You are not logged in</p>
-	</div>
+	<main className="flex w-full h-dvh absolute top-0 items-center justify-center">
+	<p>Please Login to View Saved Shows</p>
+	</main>
 	</>
     )
 }
