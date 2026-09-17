@@ -18,7 +18,7 @@ export default function Header() {
 	navigate({ to: "/" })
     }
 
-    return <header className="flex flex-row w-full justify-between p-5" >
+    return <header className="flex flex-row w-full justify-between p-5 relative z-100" >
 
     <div  > <h1>Yomutsugi</h1> </div>
     <form className="flex justify-center items-center w-full">
