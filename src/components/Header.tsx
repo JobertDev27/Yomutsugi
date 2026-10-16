@@ -18,11 +18,19 @@ export default function Header() {
 	navigate({ to: "/" })
     }
 
-    return <header className="flex flex-row w-full justify-between p-5 relative z-100" >
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
+    const formData = new FormData(e.currentTarget);
+    const query = formData.get("title") as string;
+
+    alert(query);
+  };
+
+  return <header className="flex flex-row w-full justify-between p-5 relative z-100" >
     <div  > <h1>Yomutsugi</h1> </div>
-    <form className="flex justify-center items-center w-full">
-    <input type="search" className="border-1 border-border w-full max-w-[550px] py-2 px-4 rounded-md" placeholder="Search..."/>	
+    <form className="flex justify-center items-center w-full" onSubmit={handleSearch}>
+    <input type="search" name="title" className="border-1 border-border w-full max-w-[550px] py-2 px-4 rounded-md" placeholder="Search..."/>	
     <button type="submit" className="border border-border py-2 px-4 bg-border rounded-r-lg">🔍︎</button>
     </form> 
     <nav className="flex flex-row gap-5 justify-center items-center">
