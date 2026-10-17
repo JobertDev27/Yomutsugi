@@ -36,10 +36,9 @@ function RouteComponent() {
 	async function checkShow() {
 	    const { data, error } = await supabase.from('user_shows').select().eq('user_id', claims?.sub).eq('mal_id', anime.id)
 
-	    if (error) console.error(error);
+	    if (error) throw error;
 	    if (data!.length > 0) {
 		setInLibrary(true)
-		console.log(inLibrary)
 	    }
 	}
 	checkShow()
