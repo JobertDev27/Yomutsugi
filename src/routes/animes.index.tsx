@@ -2,20 +2,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import type { Show } from "../types/type";
-import { getAllAnime } from "../api/tenrai";
+import { getAllAnime, getAnimeByTitle } from "../api/tenrai";
 import ShowCard from "../components/ShowCard";
+
+type searchParams = { title: string}
 
 export const Route = createFileRoute('/animes/')({
     component: Animes,
 })
 
 function Animes():React.ReactNode {
-    const [shows, setShows] = useState<Show[]>([])
+    const [shows, setShows] = useState<Show[]>()
+    const { title }: searchParams = Route.useSearch()
+    console.log("title: ", title)
     
     useEffect(() => {
 	const fetchShows = async () => {
-	    const temp = await getAllAnime()
-	    console.log(temp)
+	    const temp = title ? await getAnimeByTitle(title) : await getAllAnime()
+	    console.log('shows: ', temp)
 	    setShows(temp)
 	}
 	fetchShows()
