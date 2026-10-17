@@ -12,7 +12,7 @@ export const Route = createFileRoute('/animes/')({
 })
 
 function Animes():React.ReactNode {
-    const [shows, setShows] = useState<Show[]>()
+    const [shows, setShows] = useState<Show[]>([])
     const { title }: searchParams = Route.useSearch()
     console.log("title: ", title)
     
@@ -24,7 +24,7 @@ function Animes():React.ReactNode {
 	}
 	fetchShows()
 
-    },[])
+    },[title])
 
     return (
 	<>
