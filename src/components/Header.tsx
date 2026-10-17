@@ -23,8 +23,8 @@ export default function Header() {
 
     const formData = new FormData(e.currentTarget);
     const query = formData.get("title") as string;
-
-    alert(query);
+    
+    navigate({to: "/animes", search: {title: query}})
   };
 
   return <header className="flex flex-row w-full justify-between p-5 relative z-100" >
