@@ -29,10 +29,10 @@ export async function getAllAnime(): Promise<Show[]> {
     return json.data.map(_apiMapper);
 }
 
-export async function getAnimeByTitle(title?: string): Promise<Show> {
+export async function getAnimeByTitle(title?: string): Promise<Show[]> {
     const res = await fetch(`${url}anime?q=${title}`);
     const json = await res.json();
-    return _apiMapper(json.data);
+    return json.data.map(_apiMapper)
 }
 
 
